@@ -1,0 +1,13 @@
+version: '2'
+services:
+    nginx:
+        image: defunctzombie/localtunnel-nginx:latest
+        restart: always
+        network_mode: "host"
+        volumes:
+            - ./SSLs:/etc/nginx/ssl/
+    server:
+        image: defunctzombie/localtunnel-server:latest
+        restart: always
+        network_mode: "host"
+        command: "--port 3000 ---domain ${DOMAIN}"
