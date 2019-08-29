@@ -10,4 +10,4 @@ services:
         image: defunctzombie/localtunnel-server:latest
         restart: always
         network_mode: "host"
-        command: "--port 3000 --domain ${DOMAIN}"
+        command: "--port 3000 --domain ${DOMAIN} --landing ${LANDING}"
