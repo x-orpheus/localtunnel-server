@@ -19,7 +19,7 @@ lt -h your.domain --port <PORT>
 ### Optional
 
  - Custom domain: `echo 'DOMAIN=your.domain' > .env`
- - Generate SSLs with [letsencrypt](https://letsencrypt.org/): `./gen_ssl.sh <domain>`
+ - Generate SSLs with [letsencrypt](https://letsencrypt.org/): `./gen_ssl.sh -h`
 
 ### License
 
