@@ -41,17 +41,23 @@ function parse_args
   fi
 }
 
+ACME=~/.acme.sh/acme.sh
+if [ ! -f "$ACME" ]; then
+    echo -e "\e[31m$ACME does not exist, installing...\e[0m"
+    curl https://get.acme.sh | sh
+fi
+
 parse_args "$@"
 
 if [[ -n "${alias}" ]]; then
     alias_str="--challenge-alias ${alias}";
 fi
 
-~/.acme.sh/acme.sh --issue --force --dns $dns $alias_str \
+$ACME --issue --force --dns $dns $alias_str \
 -d $domain \
 -d *.$domain
 
-~/.acme.sh/acme.sh --install-cert \
+$ACME --install-cert \
 --key-file ./SSLs/server.key \
 --fullchain-file ./SSLs/server.crt \
 -d $domain \
